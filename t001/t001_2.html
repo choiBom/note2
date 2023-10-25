@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document V2 T001_2 : data binding</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+</head>
+<body>
+    <div id="app">
+        {{ nextYear('안녕') }}
+        <input :type="inputType" :value="inputData">
+        <a :href="linkNaver" target="_blank">NAVER</a>
+        <a :href="getYoutubeLink('@kossiecoder')" target="_blank">@kossiecoder Link</a>
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data: {
+                person: {
+                    name: 'name',
+                    age: 20,
+                },
+                inputData : 'bind hello',
+                inputType: 'text',
+                linkNaver: 'https://www.naver.com',
+                linkYoutube: 'https://www.youtube.com/'
+            },
+            methods: {
+                getYoutubeLink(channel) {
+                    return this.linkYoutube +  channel;
+                },
+                nextYear: function() {
+                    return this.person.name + '는 내년에 ' + (this.person.age + 1) + '입니다.'
+                },
+                otherMethods: function() {
+                    this.nextYear();
+                }
+            },
+        });
+    </script>
+</body>
+</html>

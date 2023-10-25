@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document V2 T001_5 : computed</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <a href="https://v2.ko.vuejs.org/v2/guide/computed.html">https://v2.ko.vuejs.org/v2/guide/computed.html</a>
+        </div>
+            <!-- {{ message.split('').reverse().join('') }} -->
+        <!-- {{ resetMsg1() }} -->
+        <!-- methods 함수를 사용할땐 () 를 써줘야함 -->
+
+        {{ resetMsg2 }}
+        <!-- computed 속성을 쓸 땐 데이터 변수를 쓰는것 처럼 () 없이 사용  -->
+
+        <!-- computed 속성은 캐칭을 하고 methods 함수는 캐싱을 하지않음
+        인스턴트 생성될 때 -> resetMsg2 접근 -> computed 에서 이미 계산되어 있음? -> 저장된 값을 같은 속성 사용하는곳에서 사용됨
+        resetMsg1 접근 -> 사용될 때 계산? -> 반복 -> 함수를 사용하고있는 여러곳이 있다면 각 함수에 도달할 때 마다 계산됨. -->
+    
+        <button type="button" @click="changedMsg">click</button>
+        {{ resetMsg2 }}
+        {{ resetMsg2 }}
+        {{ resetMsg2 }}
+    
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data: {
+                message : '안녕하세요',
+            },
+            methods: {
+                resetMsg1() {
+                    return this.message.split('').reverse().join('')
+                },
+                changedMsg() {
+                    this.message = 'test0915';
+                }
+            },
+            computed: {
+                resetMsg2() {
+                    return this.message.split('').reverse().join('')
+                },
+            }
+        });
+    </script>
+</body>
+</html>

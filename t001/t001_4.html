@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document V2 T001_4 : data two way binding - v-model</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+</head>
+<body>
+    <div id="app">
+        <form v-on:submit.prevent="submit">
+            <!-- <input type="text" :value="text" v-on:keyup="updateText"> -->
+            <input type="text" v-model="text">
+            {{ text }} <br>
+            <button type="submit">submit</button>
+        </form>
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data: {
+                year:2016,
+                text: "text",
+            },
+            methods: {
+                plus() {
+                    this.year++;
+                },
+                minus() {
+                    this.year--;
+                },
+                submit() {
+                    alert('test2');
+                    console.log('hello')
+                },
+                // updateText(event) {
+                //     this.text = event.target.value;
+                // }
+            },
+        });
+    </script>
+</body>
+</html>

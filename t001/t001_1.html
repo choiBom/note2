@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document V2 T001_1 : data & methods</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+</head>
+<body>
+    <div id="app">
+        {{ person.name }}
+        {{ person.age }}
+        {{ nextYear2('안녕하세요') }}
+        {{ nextYear3('안녕하세요') }}
+        {{ nextYear() }}
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data: {
+                person: {
+                    name: '#app > data obj > name 변수',
+                    age: 20,
+                }
+            },
+            methods: {
+                nextYear: function() {
+                    //methods 안에는 함수가 들어감
+                    // this 에는 data의 내용이 들어감?
+                    return this.person.name + '는 내년에 ' + (this.person.age + 1) + '입니다.'
+                },
+                nextYear2: function(greeting) {
+                    // 매개변수 사용
+                    return greeting + '!'
+                },
+                nextYear3(greeting) {
+                    // 함수를 줄여서 사용
+                    return greeting + '?'
+                }
+                ,
+                othters : function() {
+                    this.nextYear();
+                }
+            },
+        });
+    </script>
+</body>
+</html>

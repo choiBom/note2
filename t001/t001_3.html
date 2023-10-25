@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document V2 T001_3 : event</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+</head>
+<body>
+    <div id="app">
+        {{ year }} <br>
+        <button v-on:click="plus" type="button">더하기</button>
+        <button v-on:click="minus" type="button">빼기</button>
+
+        <form v-on:submit.prevent="submit">
+            <input type="text">
+            <button type="submit">submit</button>
+        </form>
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data: {
+                year:2016,
+            },
+            methods: {
+                plus() {
+                    this.year++;
+                },
+                minus() {
+                    this.year--;
+                },
+                submit() {
+                    alert('test2');
+                    console.log('hello')
+                }
+            },
+        });
+    </script>
+</body>
+</html>
